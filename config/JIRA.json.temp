@@ -1,0 +1,24 @@
+{
+    "maxissues": 1000,
+    "issuestates": "InProgress",
+    "issueseverities": "Critical,High,Medium,Low,Informational",
+    "imurl": "<Jira URL>",
+    "imUserName": "<username>",
+    "imPassword": "<encrypted password or accesstoken. To encrypt the password run the command "node .\cryptoService.js --encrypt <password>" from the base directory.>",
+    "imissuetype": "<issue type like task, bug, epic, etc.>",
+    "imsummary": "Security issue: %IssueType% found by %Scanner%",
+    "imReporterId": "<report Id>",
+    "severitymap": {
+        "High": "High",
+        "Medium": "Medium",
+        "Low": "Low",
+        "Informational": "Low"
+    },
+    "attributeMappings": [
+        {
+            "imAttr": "customfield_11440",
+            "appScanAttr": "Security Field",
+            "type": "Array"
+        }
+    ]
+}
