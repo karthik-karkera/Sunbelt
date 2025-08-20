@@ -183,7 +183,6 @@ createPayload = async (issue, imConfigObject, applicationId, applicationName) =>
             }
         }
         payload["fields"] = attrMap;
-        logger.info(payload)
         return payload;
     }
 }

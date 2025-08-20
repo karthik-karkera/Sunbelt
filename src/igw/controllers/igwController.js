@@ -110,7 +110,8 @@ methods.startSync = async (providerId, syncinterval) => {
     if(typeof jobInMap != 'undefined')
         throw `Job for the provider ${providerId} already exists`;    
     var newDateObj = new Date();
-    var pattern = '1 '+newDateObj.getMinutes()+' '+newDateObj.getHours()+' */'+syncinterval+' * *';
+    // var pattern = '1 '+newDateObj.getMinutes()+' '+newDateObj.getHours()+' */'+syncinterval+' * *';
+    var pattern = `0 0 */${syncinterval} * *`
 
     var job = new CronJob(
         pattern,
@@ -310,13 +311,15 @@ startProviderCron = async (providerId, syncinterval) => {
     if(completedScans?.total > 0){
         const updatedResults = await Promise.all(
             completedScans.issues.map(async (res) => {
-                if(res.fields.summary.includes('found by AppScan')){
+                let temp = res?.fields?.description
+                let jiratempurl = `${res.self.split('rest')[0]}browse/${res.key}`
+                if(temp && JSON.parse(temp).Scanner.includes("AppScan")){
                 let description = JSON.parse(res.fields.description);
                 let issueId = process.env.APPSCAN_PROVIDER == 'ASE' ? description.id : description.Id; 
                 let applicationId = description.ApplicationId;
                 try{
                     let status = 'Fixed';
-                    let externalId = '';
+                    let externalId = `${jiratempurl}`;
                     let comment = 'Fixed on JIRA';
                     await updateIssuesOfApplication(issueId, applicationId, status, comment, externalId, token);
                     logger.info(`Issues Fixed for Issue Id - ${issueId} Application Id - ${applicationId}`)
