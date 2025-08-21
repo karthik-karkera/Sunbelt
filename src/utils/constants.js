@@ -34,7 +34,7 @@ var constants = {
 	ASOC_UPDATE_ISSUE: "/api/v4/Issues/Application/{APPID}?odataFilter=Id%20eq%20{ISSUEID}",
 	ASOC_CREATE_HTML_SCAN_ISSUE_DETAILS: "/api/v4/Reports/Security/Scan/{SCANID}",
 	ASOC_CREATE_HTML_APP_ISSUE_DETAILS: "/api/v4/Reports/Security/Application/{APPID}",
-	ASOC_REPORT_STATUS: "/api/v4/Reports?%24top=100&%24orderby=ValidUntil&%24count=true",
+	ASOC_REPORT_STATUS: "/api/v4/Reports?%24top=200&%24orderby=ValidUntil&%24count=true",
 	ASOC_GET_HTML_ISSUE_DETAILS: "/api/v4/Reports/{REPORTID}/Download",
 	ASOC_SCAN_ISSUE_DETAILS: "/api/v4/Issues/Scan/{SCANID}?applyPolicies=None&%24top=500&%24skip=${skipValue}&%24count=true",
 	DAST_SCAN_DATA: '/api/v4/Scans/Dast/{SCANID}',
