@@ -175,11 +175,11 @@ createPayload = async (issue, imConfigObject, applicationId, applicationName) =>
                 if(attributeMappings[i].imAttr == 'labels'){
                     attrMap[attributeMappings[i].imAttr] = [`Security_Appscan_${issue.DiscoveryMethod}`];
                 }else if(attributeMappings[i].imAttr == 'customfield_10041'){
-                    attrMap[attributeMappings[i].imAttr] = ['Security']
+                    attrMap[attributeMappings[i].imAttr] = ['SECURITY']
                 }
             }
             else{
-                attrMap[attributeMappings[i].imAttr] = ['Security'];    
+                attrMap[attributeMappings[i].imAttr] = ['SECURITY'];    
             }
         }
         payload["fields"] = attrMap;
